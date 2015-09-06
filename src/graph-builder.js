@@ -26,7 +26,7 @@
 
 	// Per-type markers, as they don't inherit styles.
 	svg.append("defs").selectAll("marker")
-			.data(["suit", "licensing", "resolved"])
+			.data(["arrow"])
 			.enter().append("marker")
 			.attr("id", function (d) {
 				return d;
@@ -43,12 +43,8 @@
 	var path = svg.append("g").selectAll("path")
 			.data(force.links())
 			.enter().append("path")
-			.attr("class", function (d) {
-				return "link " + d.type;
-			})
-			.attr("marker-end", function (d) {
-				return "url(#" + d.type + ")";
-			});
+			.attr("class", "link")
+			.attr("marker-end", "url(#arrow)");
 
 	var circle = svg.append("g").selectAll("circle")
 			.data(force.nodes())
