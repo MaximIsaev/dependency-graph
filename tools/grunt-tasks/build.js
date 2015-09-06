@@ -5,11 +5,11 @@ module.exports = function (grunt, options) {
 				files: [{
 					expand: true,
 					cwd: options.srcDir,
-					src: "**/*.*",
+					src: ["**/*.*", "!pack-js.xml", "!pick-out-dependencies.xsl"],
 					dest: options.outputDir
 				}]
 			}
 		}
 	});
-	grunt.registerTask("build", ["copy:src"]);
+	grunt.registerTask("build", ["copy:src", "create-graph-data"]);
 };
