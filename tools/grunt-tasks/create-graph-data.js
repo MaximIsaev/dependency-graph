@@ -3,18 +3,17 @@ module.exports = function (grunt, options) {
 		env : {
 			"add-xsltproc-to-path" : {
 				push: {
-					PATH : "C:/Projects/pg/dependency-graph/tools/xsltproc"
+					PATH : "xsltproc"
 				}
 			}
 		},
 		xsltproc: {
 			options: {
-				stylesheet: "C:/Projects/pg/dependency-graph/src/pick-out-dependencies.xsl"
+				stylesheet: options.srcDir + "/pick-out-dependencies.xsl"
 			},
 			compile: {
-				files: {
-						'C:/Projects/pg/dependency-graph/output/graph-data.js': ['C:/Projects/pg/dependency-graph/src/pack-js.xml']
-				}
+				src : options.srcDir + "/pack-js.xml",
+				dest: options.outputDir + '/graph-data.js'
 			}
 		}
 	});
